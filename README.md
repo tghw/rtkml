@@ -1,5 +1,5 @@
 # rtkml
-RoadTrippers to KML Converter
+Roadtrippers to KML Converter
 
 Usage:
 
