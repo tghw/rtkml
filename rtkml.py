@@ -9,6 +9,12 @@ def export(trip_ids, no_waypoints=False, no_paths=False):
     kml = simplekml.Kml()
     for id in trip_ids:
         resp = requests.get(URL % id)
+        if resp.status_code == 404:
+            print 'Error 404\nCould not find trip %s' % id
+            continue
+        if resp.status_code != 200:
+            print 'Error %s trying to find trip %s' % (resp.status_code, id)
+            continue
         data = resp.json()
         trip = data['trip']
         waypoints = trip['waypoints']
