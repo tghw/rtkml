@@ -1,3 +1,4 @@
+import os
 import sys
 import argparse
 
@@ -50,7 +51,7 @@ def export(trip_ids, no_waypoints=False, no_paths=False):
                         kml.newpoint(name=waypoint['name'], coords=[(waypoint['end_location'][0], waypoint['end_location'][1])])
         except:
             print('Error parsing trip %s' % id)
-    fn = '-'.join(trip_ids) + '.kml'
+    fn = os.path.join(os.path.dirname(__file__), 'output', '-'.join(trip_ids) + '.kml')
     kml.save(fn)
     print('KML file save to %s' % fn)
 
